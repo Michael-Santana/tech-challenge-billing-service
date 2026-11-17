@@ -16,6 +16,8 @@ spec:
         prometheus.io/path: /api/v1/actuator/prometheus
         prometheus.io/port: "8082"
     spec:
+      imagePullSecrets:
+        - name: ghcr-pull
       containers:
         - name: billing-service
           image: billing-service:latest
@@ -50,14 +52,3 @@ spec:
             runAsNonRoot: true
             capabilities:
               drop: ["ALL"]
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: billing-service
-spec:
-  selector:
-    app: billing-service
-  ports:
-    - port: 8082
-      targetPort: 8082
