@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: billing-config
+data:
+  DATABASE_URL: jdbc:postgresql://billing-postgresql.billing-service.svc.cluster.local:5432/billing_service
+  DATABASE_USER: billing_service
+  RABBITMQ_HOST: rabbitmq.messaging.svc.cluster.local
+  OS_SERVICE_URL: http://os-service-app-service.os-service.svc.cluster.local/api/v1
